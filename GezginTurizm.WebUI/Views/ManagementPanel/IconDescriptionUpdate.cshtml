@@ -1,0 +1,62 @@
+﻿@model IconDescription
+@{
+    int counter = 0;
+    int rowCounter = 0;
+    ViewData["Title"] = "OurHistoryUpdate";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>İkonlu Açıklama</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+<br />
+<br />
+@if (TempData["DaSsaWbExRzTqfYGZAXaCAVRfT"] != null)
+{
+    <div class="alert alert-warning" role="alert">
+        @TempData["DaSsaWbExRzTqfYGZAXaCAVRfT"]
+    </div>
+}
+<form asp-controller="ManagementPanel" asp-action="IconDescriptionUpdate" method="POST">
+    <div class="container">
+        <div class="form-group row mt-4 mb-4">
+            <label class="control-label col" for="ShortDescription">Kısa Açıklama</label>
+            <input class="form-control col" asp-for="ShortDescription" placeholder="Kısa Açıklama" data-rule="minlen:4" required>
+            <div class="validate"></div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="control-label col" for="LongDescription">Uzun Açıklama</label>
+            <input class="form-control col" asp-for="LongDescription" placeholder="Uzun Açıklama" data-rule="minlen:4" required>
+            <div class="validate"></div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="control-label col">Mevcut Icon</label>
+            <div class="col"><i class="@Model.Icon"></i></div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="control-label col" for="Icon">Yeni Icon</label>
+            <div class="col">
+                @foreach (var lists in (SelectList)ViewBag.Icons)
+                {
+                    if (rowCounter % 5 == 0)
+                    {
+                        <br />
+                        <br />
+                    }
+                    <label for="@lists.Value"><i class="@lists.Text"></i></label>
+                    <input id="IconDescription/@counter" type="radio" name="Icon" value="@lists.Text" />
+                    counter++; rowCounter++;
+                }
+            </div>
+            <div class="validate"></div>
+        </div>
+        <div class="row">
+            <input type="submit" class="btn btn-block btn-info" asp-action="IconDescriptionUpdate" asp-controller="ManagementPanel" />
+        </div>
+    </div>
+</form>

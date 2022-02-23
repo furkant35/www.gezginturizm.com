@@ -1,0 +1,16 @@
+﻿@model SliderPhotoGalleryModel
+
+<section id="features" class="features">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.IconDescriptions)
+            {
+                <div class="col-lg-4 col-md-6 icon-box">
+                    <div class="icon"><i class="@item.Icon"></i></div>
+                    <h4 class="title"><a href="">@item.ShortDescription</a></h4>
+                    <p class="description">@item.LongDescription</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>

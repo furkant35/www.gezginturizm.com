@@ -1,0 +1,62 @@
+﻿ <!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+        <!-- <h1 class="logo"><a href="index.html">Gezgin Turizm</a></h1> -->
+        <a href="/ManagementPanel/Index" class="logo"><img src="~/img/gezginlogo2.png" alt="" class="img-fluid"></a>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li class="dropdown">
+                    <a href="#"><span>Site Yönetimi</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/ManagementPanel/SliderControl">Slider Fotoğrafları</a></li>
+                        <li><a href="/ManagementPanel/PhotoGalleryControl">Foto-Galeri Fotoğrafları</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Hizmetlerimiz</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li><a href="/ManagementPanel/EmployeeControl">Personel Taşıma</a></li>
+                                <li><a href="/ManagementPanel/StudentControl">Öğrenci Taşıma</a></li>
+                                <li><a href="/ManagementPanel/VipControl">Vip Taşıma</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/ManagementPanel/InstitutionalControl">Kurumsal</a></li>
+                        <li><a href="/ManagementPanel/OurHistory">Tarihçe</a></li>
+                        <li><a href="/ManagementPanel/OurReferences">Referanslar</a></li>
+                        <li><a href="/ManagementPanel/IconDescription">İkonlu Açıklama</a></li>
+                        <li><a href="/ManagementPanel/ContactEdit">İletişim</a></li>
+                    </ul>
+                </li>
+                <li><a href="/ManagementPanel/WorkerWithoutVehicle">Şoför Başvuruları</a></li>
+                <li><a href="/ManagementPanel/WorkerWithVehicle">Araç ile Şoför Başvuruları</a></li>
+                <li><a href="/ManagementPanel/Contact">İletişim Mesajları</a></li>
+                <li><a href="/ManagementPanel/LogOut">Çıkış Yap</a></li>
+                <li class="dropdown">
+                    <a href="#"><big class="bi bi-bell"></big>(@ViewBag.Sum)</a>
+                    <ul>
+                        @if (ViewBag.Sum > 0)
+                        {
+                            @if (ViewBag.count1 > 0)
+                            {
+                                <li><a href="/ManagementPanel/Contact">@ViewBag.count1 adet iletişim mesajı var</a></li>
+                            }
+                            @if (ViewBag.count2 > 0)
+                            {
+                                <li><a href="/ManagementPanel/WorkerWithoutVehicle">@ViewBag.count2 adet şoförlük başvurusu var</a></li>
+                            }
+                            @if (ViewBag.count3 > 0)
+                            {
+                                <li><a href="/ManagementPanel/WorkerWithVehicle">@ViewBag.count3 adet araç ile şoförlük başvurusu var</a></li>
+                            }
+                        }
+                        else
+                        {
+                            <li>Bildirim Yok</li>
+                        }
+                    </ul>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+    </div>
+</header>
+<!-- End Header -->

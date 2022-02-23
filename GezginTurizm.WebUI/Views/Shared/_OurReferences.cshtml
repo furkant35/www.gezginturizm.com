@@ -1,0 +1,21 @@
+﻿@model SliderPhotoGalleryModel
+
+<section id="cliens" class="cliens">
+    <div class="container">
+        <div class="section-title">
+            <h2>Referanslarımız</h2>
+        </div>
+        <div class="row" data-aos="zoom-in">
+            @foreach (var item in Model.OurReferences)
+            {
+                <div class="col-lg-3 col-md-6 icon-box">
+                    <div class="mx-auto">
+                        <a href="http://@item.ReferenceWebSite" target="_blank">
+                            <img src="~/img/reference/@item.ReferenceLogo" alt="@item.ReferenceWebSite" width=150 height=85 style="filter:grayscale(1);" onmouseover="this.style.filter='grayscale(0)';" onmouseout="this.style.filter='grayscale(1)';" />
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

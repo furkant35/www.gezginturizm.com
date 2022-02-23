@@ -1,0 +1,42 @@
+﻿@model VipTransport
+    @{
+        ViewData["Title"] = "VipControlAdd";
+        Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+    }
+
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Hizmetlerimiz/Vip Kontrol</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<br />
+<br />
+
+
+<form asp-controller="ManagementPanel" asp-action="VipControlAdd" method="POST">
+    <div class="container">
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="HizmetCategoryId">Kategori</label>
+            <select asp-for="ServiceCategoryId" class="form-control col">
+                <option>3</option>
+            </select>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="control-label col" for="Text">Vip Taşımacılığı İçerik</label>
+            <input class="form-control col" asp-for="Text" placeholder="İçerik" data-rule="minlen:4" required>
+            <div class="validate"></div>
+        </div>
+        <div class="row">
+            <input type="submit" class="btn btn-block btn-info" asp-action="VipControlAdd" asp-controller="ManagementPanel" />
+        </div>
+    </div>
+</form>
+
+
+

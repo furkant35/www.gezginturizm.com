@@ -1,0 +1,178 @@
+﻿@model WorkerWithoutVehicle
+@{
+    ViewData["Title"] = "SoforBasvuru";
+}
+
+
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Şoförlük Başvurusu</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<form asp-controller="Application" asp-action="WorkerWithoutVehicle" method="POST">
+    <div class="container" style="font-family:'Arial'">
+        @if (TempData["cCCbExRzTqfYGZqrwqrqrsAdAXaCAVrmAd"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["cCCbExRzTqfYGZqrwqrqrsAdAXaCAVrmAd"]
+            </div>
+        }
+        @if (TempData["REDbExRzTqfYGZqrwqrqrsAdAXaCAVrmAd"] != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @TempData["REDbExRzTqfYGZqrwqrqrsAdAXaCAVrmAd"]
+            </div>
+        }
+        <div class="form-group row mt-2 mb-4">
+            <label class="col" for="WorkerName">İşçi Adı</label>
+            <input asp-for="WorkerName" class="form-control col" required>
+            <div class="validate"></div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="WorkerSurname">İşçi Soyadı</label>
+            <input asp-for="WorkerSurname" class="form-control col" required>
+            <div class="validate"></div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="WorkerDateOfBirth">İşçi Doğum Tarihi</label>
+            <input type="date" style="width:100%" class="form-control col" id="WorkerDateOfBirth" name="WorkerDateOfBirth">
+            @Html.ValidationMessageFor(model => model.WorkerDateOfBirth)
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="control-label col" for="WorkerPhone">İşçi Telefon Numarası</label>
+            @Html.TextBoxFor(model => model.WorkerPhone, new { @class = "form-control col", @id = "phonemaska" })
+            <div class="validate"></div>
+        </div>
+
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="WorkerAddress">İşçi Adresi</label>
+            <input asp-for="WorkerAddress" class="form-control col" required>
+            <div class="validate"></div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="WorkerRetirementStatus">Emeklilik Durumu</label>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkerRetirementStatus" id="WorkerRetirementStatus1" value="True">
+                    <span>  Emekli </span>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkerRetirementStatus" id="WorkerRetirementStatus2" value="False" checked>
+                    <span>  Emekli Değil </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="IsciCalismaDurum">Çalışma Durumu</label>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkerWorkStatus" id="WorkerWorkStatus1" value="True">
+                    <span>  Çalışıyor </span>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkerWorkStatus" id="WorkerWorkStatus2" value="False" checked>
+                    <span>  Çalışmıyor </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="DriverLicenseType">İşçi Ehliyet Sınıfı</label>
+            <select asp-for="WorkerDriverLicenseType" asp-items="@ViewBag.DriverLicenseType" class="form-control col">
+                <option selected disabled>Kategori Seçiniz</option>
+            </select>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="WorkerDriverLicenseDate">İşçi Ehliyet Tarihi</label>
+            <input type="date" style="width:100%" class="form-control col" id="WorkerDriverLicenseDate" name="WorkerDriverLicenseDate">
+            @Html.ValidationMessageFor(model => model.WorkerDriverLicenseDate)
+        </div>
+
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="EvrakSrcDurum">Src Durumu</label>
+            <div class="col">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" asp-for="WorkerSRC1">
+                    <label class="form-check-label" for="WorkerSRC1">SRC1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" asp-for="WorkerSRC2">
+                    <label class="form-check-label" for="WorkerSRC2">SRC2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" asp-for="WorkerSRC3">
+                    <label class="form-check-label" for="WorkerSRC3">SRC3</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" asp-for="WorkerSRC4">
+                    <label class="form-check-label" for="WorkerSRC4">SRC4</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="WorkerPsychotechnics">Psikoteknik Durumu</label>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkerPsychotechnics" id="WorkerPsychotechnics1" value="True">
+                    <span>  Var </span>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkerPsychotechnics" id="WorkerPsychotechnics2" value="False" checked>
+                    <span>  Yok </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="IsciSoforTanitim">Şoför Tanıtım Kartı</label>
+            <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkerDriverIntroduction" id="WorkerDriverIntroduction1" value="True">
+                    <span>  Var </span>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="WorkerDriverIntroduction" id="WorkerDriverIntroduction2" value="False" checked>
+                    <span>  Yok </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="WorkerWorkExperience">İş Deneyimleriniz</label>
+            <textarea asp-for="WorkerWorkExperience" placeholder="Daha önce çalıştığınız firmaları ve ne kadar çalıştığınızı kısaca yazın." class="form-control col"></textarea>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="col" for="Explanation">Açıklama</label>
+            <textarea asp-for="Explanation" placeholder="Açıklamak istediğiniz şeyleri buraya yazınız." class="form-control col"></textarea>
+        </div>
+        <br />
+        <div class="form-group row mt-4">
+            <input type="submit" value="Gönder" class="btn btn-primary" />
+        </div>
+        <br />
+    </div>
+</form>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/css/inputmask.min.css" />
+<!-- JS includes -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/mvc/4.0/jquery.validate.unobtrusive.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-browser/0.1.0/jquery.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/bindings/inputmask.binding.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/inputmask.phone.extensions.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/inputmask/jquery.inputmask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        $('#phonemaska').inputmask("(999) 999-99-99");
+    });
+</script>

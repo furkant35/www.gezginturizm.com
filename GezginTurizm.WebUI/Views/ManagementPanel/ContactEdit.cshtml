@@ -1,0 +1,63 @@
+﻿@model List<ContactEdit>
+@{
+    ViewData["Title"] = "ContactEdit";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>İletişim Kontrol</h2>
+        </div>
+    </div>
+</section>
+@if (TempData["qqewrqbqrwqtmqAAAADazdaRemNicooNT"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["qqewrqbqrwqtmqAAAADazdaRemNicooNT"]
+    </div>
+}
+<!-- End Breadcrumbs -->
+@foreach (var item in Model)
+{
+    <br />
+    <br />
+    <form asp-action="ContactEdit" asp-controller="ManagementPanel" method="post">
+        <div class="container">
+            <div class="form-group">
+                <label class="col" for="Maps">Harita Linki</label>
+                <textarea class="form-control col" id="Maps" name="Maps" rows="4" placeholder="Link giriniz" required>@item.Maps</textarea>
+                <div class="validate"></div>
+            </div>
+            <div class="form-group">
+                <label for="Address">Adres</label>
+                <input id="Address" name="Address" value="@item.Address" placeholder="Adres giriniz" class="form-control" required>
+                <div class="validate"></div>
+            </div>
+            <div class="form-group">
+                <label for="Email1">1.Email</label>
+                <input id="Email1" name="Email1" value="@item.Email1" placeholder="1.Email giriniz" class="form-control" required>
+                <div class="validate"></div>
+            </div>
+            <div class="form-group">
+                <label for="Email2">2.Email</label>
+                <input id="Email2" name="Email2" value="@item.Email2" placeholder="2.Email giriniz" class="form-control" required>
+                <div class="validate"></div>
+            </div>
+            <div class="form-group">
+                <label for="Phone1">1.Telefon</label>
+                <input id="phonemaska" name="Phone1" value="@item.Phone1" placeholder="1.Telefon giriniz" class="form-control" required>
+                <div class="validate"></div>
+            </div>
+            <div class="form-group">
+                <label for="Phone2">2.Telefon</label>
+                <input id="phonemaska" name="Phone2" value="@item.Phone2" placeholder="2.Telefon giriniz" class="form-control" required>
+                <div class="validate"></div>
+            </div>
+            <div class="row">
+                <input type="submit" class="btn btn-block btn-info mt-3" asp-action="ContactEdit" asp-controller="ManagementPanel" />
+            </div>
+        </div>
+    </form>
+}

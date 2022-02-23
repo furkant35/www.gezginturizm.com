@@ -1,0 +1,43 @@
+﻿@model List<Admin>
+@{
+    ViewData["Title"] = "FindManager";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Yönetici Bul</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<br />
+<br />
+@if (TempData["ADHGSFJSGVnvnsaqrwqwrqrwsZZzzqB"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["ADHGSFJSGVnvnsaqrwqwrqrwsZZzzqB"]
+    </div>
+}
+<div class="container ml-5 mr-5">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Yönetici Adı</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.UserName</td>
+                    <td><a href="/ManagementPanel/UpdateManager/@x.AdminId" class="btn btn-sm btn-warning">Güncelle</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

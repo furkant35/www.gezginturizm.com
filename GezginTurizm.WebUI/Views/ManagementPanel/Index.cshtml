@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css" />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+@if (TempData["ADHGSFJSGVnvnAJDcnlzaPsaqQB"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["ADHGSFJSGVnvnAJDcnlzaPsaqQB"]
+    </div>
+}
+<div class="container text-center">
+    <div class="row" sty>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="text-center feature-block">
+                <span class="fb-icon color-info">
+                    <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                </span>
+                <h4 class="color-info">Yeni Yönetici Ekle</h4>
+                <p class="">Aşağıdaki butona tıklayarak veritabanında yeni bir yönetici adı ve şifresi tanımlayabilirsiniz.</p>
+                <a asp-action="NewManager" asp-controller="ManagementPanel" class="btn btn-info btn-custom">Tıkla</a>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="text-center feature-block">
+                <span class="fb-icon color-warning">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </span>
+                <h4 class="color-warning">Yönetici Bilgi Güncelle</h4>
+                <p class="">Aşağıdaki butona tıklayarak veritabınındaki bir yönetici adını veya şifresini güncelleyebilirsiniz.</p>
+                <a asp-action="FindManager" asp-controller="ManagementPanel" class="btn btn-warning btn-custom">Tıkla</a>
+            </div>
+        </div>
+    </div>
+</div>

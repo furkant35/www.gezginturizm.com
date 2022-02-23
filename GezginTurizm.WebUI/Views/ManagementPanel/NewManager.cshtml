@@ -1,0 +1,54 @@
+﻿@model Admin
+
+@{
+    ViewData["Title"] = "NewManager";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Yeni Yönetici Ekle</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<br />
+<br />
+@if (TempData["ADHGSFJSGVnvnAJDcnlzaPsaQqB"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ADHGSFJSGVnvnAJDcnlzaPsaQqB"]
+    </div>
+}
+
+<div class="container ml-5 mr-5">
+    <form asp-controller="ManagementPanel" asp-action="NewManager" method="post">
+        <div class="form-group">
+            <label for="UserName">Kullanıcı adı giriniz</label>
+            <input asp-for="UserName" class="form-control">
+            <div class="validate"></div>
+        </div>
+        <div class="form-group mt-2">
+            <label for="Password">Şifre giriniz</label>
+            <input type="password" class="form-control" asp-for="Password">
+            <div class="validate"></div>
+        </div>
+        <div class="form-group mt-2">
+            <label for="SecretQuestion">Gizli Soru Seçiniz</label>
+            <select asp-for="SecretQuestion" asp-items="@ViewBag.SecretQuestions" class="form-control col">
+                <option selected disabled>Seç</option>
+            </select>
+            <div class="validate"></div>
+        </div>
+        <div class="form-group mt-2">
+            <label for="SecretAnswer">Cevap belirleyiniz</label>
+            <input asp-for="SecretAnswer" class="form-control">
+        </div>
+        <div class="row container mt-5">
+            <input type="submit" value="Yeni Kullanıcı Ekle" class="btn btn-outline-primary" />
+        </div>
+    </form>
+</div>

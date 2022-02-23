@@ -1,0 +1,48 @@
+﻿@model List<Institutional>
+@{
+    ViewData["Title"] = "Institutional";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Kurumsal Kontrol</h2>
+        </div>
+    </div>
+</section>
+@if (TempData["qqewrqbqrwqtmqAAAADazdaRemNinsT"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["qqewrqbqrwqtmqAAAADazdaRemNinsT"]
+    </div>
+}
+<!-- End Breadcrumbs -->
+@foreach (var item in Model)
+{
+    <br />
+    <br />
+    <form asp-action="InstitutionalControl" asp-controller="ManagementPanel" method="post">
+        <div class="container">
+            <div class="form-group row mb-4">
+                <label class="col" for="AboutUs">Hakkimizda</label>
+                <textarea class="form-control col" id="AboutUs" name="AboutUs" rows="8" placeholder="Mesajınız" required>@item.AboutUs</textarea>
+                <div class="validate"></div>
+            </div>
+            <div class="form-group row mb-4">
+                <label class="col" for="OurMission">Misyonumuz</label>
+                <textarea class="form-control col" id="OurMission" name="OurMission" rows="8" placeholder="Mesajınız" required>@item.OurMission</textarea>
+                <div class="validate"></div>
+            </div>
+            <div class="form-group row mb-3">
+                <label class="col" for="OurVision">Vizyonumuz</label>
+                <textarea class="form-control col" id="OurVision" name="OurVision" rows="8" placeholder="Mesajınız" required>@item.OurVision</textarea>
+                <div class="validate"></div>
+            </div>
+            <div class="row">
+                <input type="submit" class="btn btn-block btn-info" asp-action="InstitutionalControl" asp-controller="ManagementPanel" />
+            </div>
+        </div>
+    </form>
+}

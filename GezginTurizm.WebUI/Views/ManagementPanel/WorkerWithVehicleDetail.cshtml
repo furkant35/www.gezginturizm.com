@@ -1,0 +1,271 @@
+﻿@model List<WorkerWithVehicle>
+@{
+    ViewData["Title"] = "WorkerWithVehicleDetail";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+
+
+@foreach (var x in Model)
+{
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Gelen Araç ile Şoförlük Başvuruları/Başvuran Kişi :<strong> @ViewBag.application </strong>/ <a href="#myModal_@x.WorkerId" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#myModal_@x.WorkerId">Başvuruyu Sil</a> </h2>
+            </div>
+        </div>
+    </section>
+    <!-- End Breadcrumbs -->
+    <div class="modal fade" id="myModal_@x.WorkerId">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Uyarı</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Silme işlemini onaylıyor musun ?
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <a href="/ManagementPanel/WorkerWithVehicleDelete/@x.WorkerId" class="btn btn-danger">Sil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="container ml-5 mr-5">
+        <table class="table table-striped table-hover">
+            <tr style="background-color:darkgray">
+                <td><h5>Araç Bilgileri</h5></td>
+            </tr>
+            <tr>
+                <th>Plaka</th>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>Cinsi</th>
+                <th>Rengi</th>
+                <th>Koltuk Sayısı</th>
+                <th>Çalışacak Kişi</th>
+            </tr>
+            <tr>
+                <td>@x.VehiclePlate</td>
+                <td>@x.VehicleBrand</td>
+                <td>@x.VehicleModel</td>
+                <td>@x.VehicleType</td>
+                <td>@x.VehicleColor</td>
+                <td>@x.VehicleSeatNumber</td>
+                <td>
+                    @if (x.VehiclePersonToWork)
+                    {
+                        <span class="badge badge-pill bg-success">Şoforü</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill bg-danger">Kendisi</span>
+                    }
+                </td>
+            </tr>
+            <tr style="background-color:darkgray">
+                <td><h5>İşçi Bilgileri</h5></td>
+            </tr>
+            <tr>
+                <th>Ad</th>
+                <th>Telefon</th>
+                <th>Adres</th>
+                <th>Çalışma Durumu</th>
+                <th>Emeklilik Durumu</th>
+            </tr>
+            <tr>
+                <td>@x.WorkerName</td>
+                <td>@x.WorkerPhone</td>
+                <td>@x.WorkerAddress</td>
+                <td>
+                    @if (x.WorkerWorkingStatus)
+                    {
+                        <span class="badge badge-pill bg-success">Çalışıyor</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill bg-danger">Çalışmıyor</span>
+                    }
+                </td>
+                <td>
+                    @if (x.WorkerRetirementStatus)
+                    {
+                        <span class="badge badge-pill bg-success">Emekli</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill bg-danger">Emekli Değil</span>
+                    }
+                </td>
+            </tr>
+            <tr style="background-color:darkgray">
+                <td><h5>Evrak Bilgileri</h5></td>
+            </tr>
+            <tr>
+                <th>Ehliyet Sınıfı</th>
+                <th>Ehliyet Tarihi</th>
+                <th>Psikoteknik</th>
+                <th>Şoför Tanıtım Kartı</th>
+                <th>Deneyim</th>
+                <th>Referans</th>
+                <th>Açıklama</th>
+            </tr>
+            <tr>
+                <td>@x.DocumentDriverLicenseType</td>
+                <td>@x.DocumentDriverLicenseDate</td>
+                <td>
+                    @if (x.DocumentPsychoTechnics)
+                    {
+                        <span class="badge badge-pill bg-success">Var</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill bg-danger">Yok</span>
+                    }
+                </td>
+                <td>
+                    @if (x.DocumentDriverIntroduction)
+                    {
+                        <span class="badge badge-pill bg-success">Var</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill bg-danger">Yok</span>
+                    }
+                </td>
+
+                <td>
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#myModal">
+                        <i class="bi bi-eye"></i>           
+                    </button>                               
+                </td>                                       
+                <td>                                        
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#myModal2">
+                        <i class="bi bi-eye"></i>           
+                    </button>                               
+                </td>                                       
+                <td>                                        
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#myModal3">
+                        <i class="bi bi-eye"></i>
+                    </button>
+                </td>
+            </tr>
+            <tr style="background-color:darkgray">
+                <td><h5>SRC Bilgileri</h5></td>
+            </tr>
+            <tr>
+                <th>SRC 1</th>
+                <th>SRC 2</th>
+                <th>SRC 3</th>
+                <th>SRC 4</th>
+            </tr>
+            <tr>
+                <td>
+                    @if (x.DocumentSRC1)
+                    {
+                        <span class="badge badge-pill bg-success">Var</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill bg-danger">Yok</span>
+                    }
+                </td>
+                <td>
+                    @if (x.DocumentSRC2)
+                    {
+                        <span class="badge badge-pill bg-success">Var</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill bg-danger">Yok</span>
+                    }
+                </td>
+                <td>
+                    @if (x.DocumentSRC3)
+                    {
+                        <span class="badge badge-pill bg-success">Var</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill bg-danger">Yok</span>
+                    }
+                </td>
+                <td>
+                    @if (x.DocumentSRC4)
+                    {
+                        <span class="badge badge-pill bg-success">Var</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-pill bg-danger">Yok</span>
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">@ViewBag.application deneyim detayı</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    @x.DocumentWorkExperience
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">@ViewBag.application referans detayı</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    @x.DocumentReference
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">@ViewBag.application açıklama detayı</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    @x.DocumentExplanation
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

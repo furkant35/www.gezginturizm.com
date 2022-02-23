@@ -1,0 +1,45 @@
+﻿@model OurReferences
+@{
+    ViewData["Title"] = "OurReferencesAdd";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Referans</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<br />
+<br />
+
+@if (TempData["sDqaCXcvvswetqwQErfsdfqQDRA"] != null)
+{
+    <div class="alert alert-warning" role="alert">
+        @TempData["sDqaCXcvvswetqwQErfsdfqQDRA"]
+    </div>
+}
+
+<form asp-controller="ManagementPanel" asp-action="OurReferencesAdd" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <div class="form-group row mt-4 mb-4">
+            <label class="control-label col" for="ReferenceWebSite">Referans Website</label>
+            <input class="form-control col" asp-for="ReferenceWebSite" placeholder="Website" data-rule="minlen:4" required>
+            <div class="validate"></div>
+        </div>
+        <div class="form-group row mt-4 mb-4">
+            <label class="control-label col" for="ReferenceLogo">Referans Logo</label>
+            <input class="col" type="file" name="file" />
+            <div class="validate"></div>
+        </div>
+        <div class="row">
+            <input type="submit" class="btn btn-block btn-info" asp-action="OurReferencesAdd" asp-controller="ManagementPanel" />
+        </div>
+    </div>
+</form>
+
+

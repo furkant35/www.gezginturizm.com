@@ -1,0 +1,71 @@
+﻿@model List<Slider>
+@{
+    ViewData["Title"] = "SliderControl";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Slider Fotoğrafları</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<br />
+<br />
+@if (TempData["QaWbExRzTqfYGZAXaCAVrBN"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["QaWbExRzTqfYGZAXaCAVrBN"]
+    </div>
+}
+@if (TempData["QaWbExRzTqfYGZAXaCAVrfT"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["QaWbExRzTqfYGZAXaCAVrfT"]
+    </div>
+}
+<div class="container  ml-5 mr-5">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Slider Önizleme</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/img/slide/@item.SliderPhoto" width="170" height="100" />
+                    </td>
+                    <td><a href="#myModal_@item.SliderId" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_@item.SliderId"><i class="bi bi-trash"></i></a></td>
+                </tr>
+                <div class="modal fade" id="myModal_@item.SliderId">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Uyarı</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                Silme işlemini onaylıyor musun ?
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <a href=@Url.Action("SliderControlDelete","ManagementPanel",new { id=@item.SliderId , fileName=@item.SliderPhoto }) class="btn btn-sm btn-danger">Sil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <tr><td colspan="3"><a class="btn btn-primary" asp-controller="ManagementPanel" asp-action="SliderAdd">Yeni Slider Ekle</a></td></tr>
+        </tbody>
+    </table>
+</div>

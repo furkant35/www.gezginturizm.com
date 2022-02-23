@@ -1,0 +1,76 @@
+﻿@model List<OurReferences>
+@{
+    ViewData["Title"] = "OurReferences";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Referanslarımız</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<br />
+<br />
+@if (TempData["QaWbExRzTqfYGZAXaCAVrBn"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["QaWbExRzTqfYGZAXaCAVrBn"]
+    </div>
+}
+@if (TempData["QaWbExRzTqfYGZAXaCAVRfT"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["QaWbExRzTqfYGZAXaCAVRfT"]
+    </div>
+}
+<div class="container  ml-5 mr-5">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Referans Website</th>
+                <th>Referans Logo</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                {
+                    <tr>
+                        <td>@item.ReferenceWebSite</td>
+                        <td>
+                            <img src="~/img/reference/@item.ReferenceLogo" width="170" height="100" />
+                        </td>
+                        <td><a href="#myModal_@item.Id" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal_@item.Id"><i class="bi bi-trash"></i></a></td>
+                    </tr>
+                }
+                <div class="modal fade" id="myModal_@item.Id">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Uyarı</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                Silme işlemini onaylıyor musun ?
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <a href=@Url.Action("OurReferencesDelete","ManagementPanel",new { id=@item.Id, fileName=@item.ReferenceLogo }) class="btn btn-danger">Sil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <tr><td colspan="3"><a class="btn btn-primary" asp-controller="ManagementPanel" asp-action="OurReferencesAdd">Yeni Referans Ekle</a></td></tr>
+        </tbody>
+    </table>
+</div>
+

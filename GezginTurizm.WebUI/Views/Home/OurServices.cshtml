@@ -1,0 +1,78 @@
+﻿@model OurServicesModel
+@{
+    ViewData["Title"] = "Hizmetlerimiz";
+}
+
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Hizmetlerimiz</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+<br />
+<!-- Page Content -->
+<div class="container">
+    <div class="mb-4" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="card">
+            <div class="card-header" role="tab" id="headingOne">
+                <h5 class="mb-0">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Personel Taşımacılığı #1</a>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                <div class="card-body">
+                    <ol>
+                        @foreach (var item in Model.EmployeeTransports)
+                        {
+                            <h5><li type="disc">@item.Text</li></h5>
+                        }
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Öğrenci Taşımacılığı #2</a>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="card-body">
+                    <ol>
+                        @foreach (var item in Model.StudentTransports)
+                        {
+                            <h5><li type="disc">@item.Text</li></h5>
+                        }
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="headingThree">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Vip Taşıma #3</a>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse show" role="tabpanel" aria-labelledby="headingThree">
+                <div class="card-body">
+                    <ol>
+                        @foreach (var item in Model.VipTransports)
+                        {
+                            <h5><li type="disc">@item.Text</li></h5>
+                        }
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="~/vendor2/jquery/jquery.min.js"></script>
+<script src="~/vendor2/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- /.container -->

@@ -1,0 +1,44 @@
+﻿@model PhotoGallery
+@{
+    ViewData["Title"] = "PhotoGalleryAdd";
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
+}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Foto-Galeri Fotoğraf</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<br />
+<br />
+
+@if (TempData["qqewrqbqrwqtmqAAAADazdaDEQNBENb"] != null)
+{
+    <div class="alert alert-warning" role="alert">
+        @TempData["qqewrqbqrwqtmqAAAADazdaDEQNBENb"]
+    </div>
+}
+
+<form asp-controller="ManagementPanel" asp-action="PhotoGalleryAdd" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <div class="form-group row mt-4 mb-4">
+            <label class="control-label col" for="PhotoName">Foto-Galeri Fotoğraf</label>
+            <input class="col" type="file" name="file" />
+            <div class="validate"></div>
+        </div>
+        <div class="row">
+            <input type="submit" class="btn btn-block btn-info" asp-action="PhotoGalleryAdd" asp-controller="ManagementPanel" />
+        </div>
+        <div class="row mt-3">
+            <h4 class="alert-danger">Lütfen fotoğrafın boyutlarını maximum 500 x 500 olarak ayarlayarak atınız.</h4>
+        </div>
+    </div>
+</form>
+
+
+
